@@ -1,0 +1,16 @@
+repos:
+  - repo: local
+    hooks:
+      - id: rustfmt
+        name: Check Rust formatting
+        entry: cargo fmt --manifest-path native/emulator-core/Cargo.toml -- --check
+        language: system
+        files: '\.rs$'
+        pass_filenames: false
+
+      - id: dotnet-format
+        name: Check C# formatting
+        entry: dotnet format RustPS5.slnx --verify-no-changes
+        language: system
+        files: '\.cs$'
+        pass_filenames: false
